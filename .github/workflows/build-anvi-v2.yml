@@ -28,6 +28,10 @@ jobs:
           unzip -q gradle-8.9-bin.zip -d "$HOME"
           echo "$HOME/gradle-8.9/bin" >> "$GITHUB_PATH"
 
+            - name: Enable AndroidX
+        run: |
+          echo "android.useAndroidX=true" >> AnviAI_Full_Native/gradle.properties
+          echo "android.enableJetifier=true" >> AnviAI_Full_Native/gradle.properties
       - name: Build APK
         working-directory: AnviAI_Full_Native
         run: gradle --no-daemon --stacktrace assembleDebug
